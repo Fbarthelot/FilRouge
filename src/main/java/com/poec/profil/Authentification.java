@@ -39,7 +39,7 @@ public class Authentification {
         if (monRepertoire.exists()) {
 
             if (monRepertoire.isDirectory()) {
-                System.out.println("le fichier est un répertoire");
+//                System.out.println("le fichier est un répertoire");
             } else {
                 System.err.println("le fichier n'est pas un répertoire");
             }
@@ -66,7 +66,7 @@ public class Authentification {
 
                             String[] splitLine = line.split(": ");
                             listProfil.add(splitLine[1]);
-                            System.out.println(listProfil.toString());
+//                            System.out.println(listProfil.toString());
                         }
                     }
                 } catch (IOException e) {

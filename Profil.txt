@@ -1,0 +1,7 @@
+nom: maurice
+email: maurice@Laposte.fr
+password: maurice
+
+nom: kévin
+email: kévin@gmail.com
+password: kikinou76
