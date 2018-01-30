@@ -2,14 +2,14 @@ package com.poec.profil;
 
 import java.util.ArrayList;
 
-public class Authentification extends Profil{
+public class Authentification extends Profil {
 
-//    private String email;
+    //    private String email;
     private String password;
     private ArrayList<String> listProfil = new ArrayList();
 
     public Authentification() {
-        lectureFichierProfilTxt();
+        listProfil = lectureFichierProfilTxt();
     }
 
     public Boolean setAuthentification(String mail, String pswd) {
