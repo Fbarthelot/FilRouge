@@ -29,32 +29,5 @@ public class Authentification extends Profil {
         return result;
     }
 
-//    public void lectureFichier() {
-//        String line ;
-//
-//                FileInputStream fis;
-//                try {
-//                    fis = new FileInputStream("./Profil.txt");
-//                    Scanner scanner = new Scanner(fis);
-//
-//
-//                    while (scanner.hasNextLine()) {
-//
-//
-//                        while (scanner.hasNextLine()) {
-//                            line = scanner.nextLine();
-//
-//                            if (line.isEmpty()) {
-//                                break;
-//                            }
-//
-//                            String[] splitLine = line.split(": ");
-//                            listProfil.add(splitLine[1]);
-////                            System.out.println(listProfil.toString());
-//                        }
-//                    }
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//    }
+
 }

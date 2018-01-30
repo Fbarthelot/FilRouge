@@ -3,7 +3,7 @@ package com.poec;
 
 import com.poec.profil.Authentification;
 import com.poec.profil.Profil;
-import com.sun.org.apache.xpath.internal.SourceTree;
+
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -21,20 +21,16 @@ public class App {
             if (result.equals("oui")) {
                 connexion(scanner);
                 resultBonjour = false;
+
             } else if (result.equals("non")) {
                 newProfil(scanner);
                 resultBonjour = false;
+
             } else {
                 System.out.println("Veuillez répondre par oui ou par non");
             }
 
         }
-//
-//        //verification du profil
-//        boolean verif=false;
-//        Authentification auth = new Authentification();
-//        verif=auth.setAuthentification("maurice@Laposte.fr", "maurice");
-//        System.out.println("verif authentification "+verif);
 
     }
 
@@ -48,8 +44,8 @@ public class App {
         while (mailOk == false) {
             System.out.println("Veuillez nous indiquer un email: ");
             email = scan.next();
-            // on verifie le format du mail
-            Pattern p = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+            // on vérifie le format du mail
+            Pattern p = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,4})$");
             Matcher m = p.matcher(email);
 
             if (m.matches()) {
@@ -72,6 +68,7 @@ public class App {
         boolean save = profil.setProfil(nom, email, password);
         if (save == true) {
             System.out.println("Bienvenu vous avez bien été enregistré");
+            demandeFilm(scan);
         } else {
             System.out.println("l'enregistrement à échoué");
         }
@@ -93,11 +90,32 @@ public class App {
             verif = auth.setAuthentification(email, pswd);
             if (verif) {
                 System.out.println("Bonjour " + auth.getNom(email));
+                auth.setEmail(email);
+                auth.setPassword(pswd);
+
                 connexionOk = true;
+                demandeFilm(scan);
+
             } else {
                 System.out.println("je ne vous reconnais pas ");
             }
         }
 
+    }
+
+    private static void demandeFilm(Scanner scan){
+        boolean viewFilm =false;
+       while(viewFilm==false) {
+           System.out.println("Quel film voulez vous voir ?");
+           String film = scan.next();
+           RechercheFilm findFilm = new RechercheFilm();
+           boolean filmExist = findFilm.getFilm(film);
+           if (filmExist) {
+               System.out.println("Bon Film !!!");
+               viewFilm = true;
+           } else {
+               System.out.println("Nous ne possédons pas ce film ");
+           }
+       }
     }
 }
